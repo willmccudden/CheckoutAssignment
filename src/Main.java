@@ -23,23 +23,28 @@ public class Main {
         System.out.println("Test Case 6: " + (0.6f == checkout(new String[]{"Apple"}) ? "Pass!" : "Fail"));
 
         // Test Case 7 - Single Orange
-        System.out.println("Test Case 7: " + (0.6f == checkout(new String[]{"Orange"}) ? "Pass!" : "Fail"));
+        System.out.println("Test Case 7: " + (0.25f == checkout(new String[]{"Orange"}) ? "Pass!" : "Fail"));
 
         //Test Case 8 - Empty Array
         System.out.println("Test Case 8: " + (0f == checkout(new String[]{}) ? "Pass!" : "Fail"));
 
+        //Test Case 9 - inputting with no capital. This test case prompted me to use 'equalsIgnoreCase' in the method to allow for inputs with capitals or without
+        System.out.println("Test Case 9: " + (0.25f == checkout(new String[]{"orange"}) ? "Pass!" : "Fail"));
+
+        //Test Case 10 - Verify else statement works in the logs
+        System.out.println("Test Case 10: " + (0f == checkout(new String[]{"orange1", "orange2"}) ? "Pass!" : "Fail"));
     }
 
     private static float checkout(String[] shoppingBag){
         float sum = 0;
         for(String item : shoppingBag){
-            if("Apple".equals(item)){
+            if("Apple".equalsIgnoreCase(item)){
                 sum += 0.60;
-            } else if("Orange".equals(item)) {
+            } else if("Orange".equalsIgnoreCase(item)) {
                 sum += 0.25;
             } else {
                 // Dealing with unexpected inputs
-                System.out.print("Unknown item in shopping bag: " + item + "removed from basket");
+                System.out.println("Unknown item in shopping bag: " + item + " removed from basket");
             }
         }
         return sum;
